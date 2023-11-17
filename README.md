@@ -2,7 +2,7 @@
 
 Este documento descreve uma análise exploratória de dados sobre filmes de terror, utilizando a linguagem de programação Python e diversas bibliotecas, como NumPy, Pandas, Seaborn, Matplotlib, Plotly, e Scikit-Learn.
 
-## 1. Bibliotecas Utilizadas
+# 1. Bibliotecas Utilizadas
 
 import numpy as np
 import pandas as pd
@@ -11,27 +11,26 @@ import matplotlib.pyplot as plt
 import plotly.express as px
 from sklearn.preprocessing import StandardScaler
 
-## 2. Carregamento dos Dados
+# 2. Carregamento dos Dados
 
-# Carregamento dos dados
 df = pd.read_csv('./Datasets/horror_movies.csv', sep=',')
 bkp = pd.read_csv('./Datasets/horror_movies.csv', sep=',')
 df.head()
 
-## 2.1 Explorando e Entendendo os Dados
+### 2.1 Explorando e Entendendo os Dados
 
-# Resumo estatístico das colunas 'popularity', 'budget', 'revenue'
+##### Resumo estatístico das colunas 'popularity', 'budget', 'revenue'
 df[['popularity', 'budget', 'revenue']].describe()
-## 2.2 Visualizando a Distribuição do Orçamento, Receita e Popularidade
+### 2.2 Visualizando a Distribuição do Orçamento, Receita e Popularidade
 
-# Visualização da distribuição usando Plotly
+#### Visualização da distribuição usando Plotly
 import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 fig = make_subplots(rows=3, cols=1, subplot_titles=(
     'Distribuição do orçamento', 'Distribuição da receita', 'Distribuição da popularidade'))
 
-# Gráficos de distribuição
+#### Gráficos de distribuição
 fig.add_trace(go.Histogram(
     x=df['budget'], name='Orçamento', marker_color='blue', nbinsx=50), row=1, col=1)
 fig.add_trace(go.Histogram(
@@ -39,7 +38,7 @@ fig.add_trace(go.Histogram(
 fig.add_trace(go.Histogram(
     x=df['popularity'], name='Popularidade', marker_color='red', nbinsx=50), row=3, col=1)
 
-# Layout do gráfico
+#### Layout do gráfico
 fig.update_layout(height=800, width=800,
                   title_text="Distribuição do orçamento, receita e popularidade", showlegend=False)
 fig.update_xaxes(title_text="Orçamento", row=1, col=1)
